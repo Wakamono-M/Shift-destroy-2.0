@@ -1,0 +1,23 @@
+-- Скрипт сделан Зулкайдаевом Мурадом Wokamone 
+
+
+
+-- Создаем бокс userInputService
+local userInputService = game:GetService("UserInputService")
+
+-- Функция, которая будет вызываться при каждом обновлении ввода
+local function onInput(input)
+	-- Проверяем, является ли ввод нажатием клавиши Shift
+	if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
+		-- Получаем персонажа игрока
+		local character = game.Players.LocalPlayer.Character
+		-- Проверяем, что персонаж существует
+		if character then
+			-- Уничтожаем персонажа
+			character:Destroy()
+		end
+	end
+end
+
+-- Привязываем функцию к событию InputBegan
+userInputService.InputBegan:Connect(onInput)
